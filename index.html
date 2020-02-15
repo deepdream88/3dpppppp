@@ -454,10 +454,6 @@
 				 MIDI.Player.loadFile(this.result , MIDI.Player.start);
               }
             }
-			
-			window.onload = function(){
-				var files = document.getElementById('files');
-			}
         </script>
 
     <script src="js/urchin.js" type="text/javascript">
@@ -488,5 +484,8 @@
 		本站网址：gangqin.ml（钢琴.ml），找乐谱请前往：<a href="http://midi.midicn.com/">乐谱（一）</a>&nbsp;<a href="https://www.midiworld.com/files/">乐谱（二）</a>&nbsp;<a href="http://miditune.com/">乐谱（三）</a>&nbsp;<a href="https://freemidi.org/">乐谱（四）</a>
       	<input type="file" id="files" style="display: none" onchange="fileImport()" />
     </div>
+	<script>
+		var files = document.getElementById('files');
+	</script>
     </body>
 </html>
