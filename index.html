@@ -432,7 +432,7 @@
             
             window.onload = function ()
             {
-              	requestStart(1,"/midis.json","","GET");                  
+              	requestStart(1,"/midis.json","","GET");
             };            
 
             window.addEventListener( 'resize', on_window_resize, false );
@@ -454,7 +454,10 @@
 				 MIDI.Player.loadFile(this.result , MIDI.Player.start);
               }
             }
-          var files = document.getElementById('files');
+			
+			window.onload = function(){
+				var files = document.getElementById('files');
+			}
         </script>
 
     <script src="js/urchin.js" type="text/javascript">
