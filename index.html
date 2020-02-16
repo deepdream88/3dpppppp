@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>3D钢琴播放器</title>
+        <title>3D钢琴播放器_模拟钢琴_私人演奏厅</title>
         <script src="js/three.js"></script>
         <script src="js/OrbitAndPanControls.js"></script>
         <script src="js/ColladaLoader.js"></script>
@@ -400,7 +400,7 @@
                     //gui.add(controls, 'key_attack_time', 2.0 , 40.0);
                     //gui.add(controls, 'key_max_rotation',0.2 , 1.0);                             
                     var song = gui.add(controls, 'song', songsToFiles).name("歌曲");
-                    gui.add(controls,'upload').name("播放本地文件");
+                    gui.add(controls,'upload').name("播放电脑中下载的MID音乐序列文件");
                     var noteOnColorControl = gui.addColor(controls, 'noteOnColor').name("音符颜色");
                     noteOnColorControl.onChange(function(value)
                                     {
@@ -451,15 +451,21 @@
               reader.onload = function ()
               {
                   //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
-				 MIDI.Player.loadFile(this.result , MIDI.Player.start);
+				 try
+				 {
+					MIDI.Player.loadFile(this.result , MIDI.Player.start);
+				 }catch(e)
+				 {
+					alert("无法播放该文件，可能是格式不支持或者文件数据损坏，请更换其他MID文件")
+				 }
               }
             }
         </script>
 
-    <div id="info" style="text-align:left">
+    <div id="info" style="text-align:left;font-size: 1.3em;">
         控制方法：按键盘字母键可以按钢琴键，鼠标右键移动位置，如果不显示钢琴，请刷新页面<br/>
-		本站网址：gangqin.ml（钢琴.ml），找乐谱请前往：<a href="http://midi.midicn.com/">乐谱（一）</a>&nbsp;<a href="https://www.midiworld.com/files/">乐谱（二）</a>&nbsp;<a href="http://miditune.com/">乐谱（三）</a>&nbsp;<a href="https://freemidi.org/">乐谱（四）</a>
-      	<input type="file" id="files" style="display: none" onchange="fileImport()" />
+		本站网址：gangqin.ml（钢琴.ml），找MID音乐文件请前往：<a href="http://midi.midicn.com/">渠道（一）</a>&nbsp;<a href="https://www.midiworld.com/files/">渠道（二）</a>&nbsp;<a href="http://miditune.com/">渠道（三）</a>&nbsp;<a href="https://freemidi.org/">渠道（四）</a>
+      	<input type="file" id="files" style="display: none" onchange="fileImport()" accept=".mid" />
     </div>
 	<script>
 		var files = document.getElementById('files');
